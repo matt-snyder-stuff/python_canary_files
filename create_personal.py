@@ -47,30 +47,37 @@ for n in range(numberOfFiles):
             
         # Add a placeholder message as a paragraph to the document    
         doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
+         # Save the document with the generated filename
         doc.save(filename)
+        
     elif ext == '.pptx':
+        # Generate a PowerPoint presentation
         pres = Presentation()
         slide_layout = pres.slide_layouts[0]  # choosing a slide layout
         slide = pres.slides.add_slide(slide_layout)  # adding a slide
         title = slide.shapes.title  # defining title
         subtitle = slide.placeholders[1]  # defining subtitle
         
+        # Add random numbers to slides
         for _ in range(10):
             subtitle.text = str(random.randint(0,60 + (n * 10)))
             slide = pres.slides.add_slide(slide_layout)
             subtitle = slide.placeholders[1]
-        
+            
+        # Add a placeholder message to the final slide
         subtitle.text = "ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE."
+        # Save the presentation with the generated filename
         pres.save(filename)
     elif ext == '.xlsx':
+        # Generate an Excel workbook
         workbook = Workbook()
         sheet = workbook.active
 
-        # write headers
+        # Write headers to the worksheet
         headers = ["First Name", "Last Name", "Address", "Phone Number"]
         sheet.append(headers)
 
-        # write fake data
+        # Generate fake data and write to the worksheet
         for _ in range(10):
             first_name = fake.first_name()
             last_name = fake.last_name()

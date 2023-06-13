@@ -12,7 +12,7 @@ numberOfFiles = 10
 
 
 base_name = ("project", "new","file","workplace", "report", "training", "meeting" ,"screenshot", "09-28-2021")
-
+extra_name = ("school", "house", "office", "team", "group", "committee", "department", "division", "unit", "branch", "sector", "home", "city", "district", "building", "site")
 file_ext = (".txt", ".pdf", ".docx", ".xlsx")
 all_names = (extra_name, base_name, file_ext)
 

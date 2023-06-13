@@ -10,7 +10,7 @@ fake = Faker()
 
 numberOfFiles = 10
 
-
+# Define different parts of the filename
 base_name = ("project", "new","file","workplace", "report", "training", "meeting" ,"screenshot", "09-28-2021")
 extra_name = ("school", "house", "office", "team", "group", "committee", "department", "division", "unit", "branch", "sector", "home", "city", "district", "building", "site")
 file_ext = (".txt", ".pdf", ".docx", ".xlsx")
@@ -19,20 +19,33 @@ all_names = (extra_name, base_name, file_ext)
 
 for n in range(numberOfFiles):
     ext = random.choice(file_ext)
+    # Generate a random filename by choosing parts from different tuples
     filename = ' '.join([random.choice(i) for i in all_names])
     
     if ext == '.pdf':
+        # Generate a PDF file
         pdf = FPDF()
         pdf.add_page()
         pdf.set_font("Arial", size=12)
+        
+         # Add random numbers to the PDF
         for _ in range(10):
             pdf.cell(0, 10, txt=str(random.randint(0,60 + (n * 10))), ln=True)
+            
+        # Add a placeholder message to the PDF    
         pdf.cell(0, 10, txt="ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.", ln=True)
+        
+        # Save the PDF with the generated filename
         pdf.output(filename)
+        
     elif ext == '.docx':
+        # Generate a Word document
         doc = Document()
+        # Add random numbers as paragraphs to the document
         for _ in range(10):
             doc.add_paragraph(str(random.randint(0,60 + (n * 10))))
+            
+        # Add a placeholder message as a paragraph to the document    
         doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
         doc.save(filename)
     elif ext == '.pptx':

@@ -12,7 +12,7 @@ numberOfFiles = 10
 
 
 base_name = ("project", "new","file","workplace", "report", "training", "meeting" ,"screenshot", "09-28-2021")
-extra_name = ("Q2", "Q3", "Q4", "VMC", "NSX", "WorkSpace One", "personal","vmware","school")
+
 file_ext = (".txt", ".pdf", ".docx", ".xlsx")
 all_names = (extra_name, base_name, file_ext)
 
@@ -27,13 +27,13 @@ for n in range(numberOfFiles):
         pdf.set_font("Arial", size=12)
         for _ in range(10):
             pdf.cell(0, 10, txt=str(random.randint(0,60 + (n * 10))), ln=True)
-        pdf.cell(0, 10, txt="Copyright (c) 1998-2009 VMware, Inc.  All rights reserved.", ln=True)
+        pdf.cell(0, 10, txt="ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.", ln=True)
         pdf.output(filename)
     elif ext == '.docx':
         doc = Document()
         for _ in range(10):
             doc.add_paragraph(str(random.randint(0,60 + (n * 10))))
-        doc.add_paragraph("Copyright (c) 1998-2009 VMware, Inc.  All rights reserved.")
+        doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
         doc.save(filename)
     elif ext == '.pptx':
         pres = Presentation()
@@ -47,7 +47,7 @@ for n in range(numberOfFiles):
             slide = pres.slides.add_slide(slide_layout)
             subtitle = slide.placeholders[1]
         
-        subtitle.text = "Copyright (c) 1998-2009 VMware, Inc.  All rights reserved."
+        subtitle.text = "ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE."
         pres.save(filename)
     elif ext == '.xlsx':
         workbook = Workbook()
@@ -71,4 +71,4 @@ for n in range(numberOfFiles):
         with open(filename, 'w') as newFile:
             for _ in range(10):
                 newFile.write(str(random.randint(0,60 + (n * 10))) + "\n")
-            newFile.write("Copyright (c) 1998-2009 VMware, Inc.  All rights reserved.\n")
+            newFile.write("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.\n")

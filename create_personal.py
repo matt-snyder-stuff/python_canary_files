@@ -14,7 +14,7 @@ numberOfFiles = 10
 base_name = ("project", "new","file","workplace", "report", "training", "meeting" ,"screenshot", "09-28-2021")
 extra_name = ("school", "house", "office", "team", "group", "committee", "department", "division", "unit", "branch", "sector", "home", "city", "district", "building", "site")
 file_ext = (".txt", ".pdf", ".docx", ".xlsx")
-all_names = (extra_name, base_name, file_ext)
+all_names = (extra_name, base_name)
 
 
 for n in range(numberOfFiles):
@@ -36,7 +36,7 @@ for n in range(numberOfFiles):
         pdf.cell(0, 10, txt="ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.", ln=True)
         
         # Save the PDF with the generated filename
-        pdf.output(filename)
+        pdf.output(filename + ext)
         
     elif ext == '.docx':
         # Generate a Word document
@@ -48,7 +48,7 @@ for n in range(numberOfFiles):
         # Add a placeholder message as a paragraph to the document    
         doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
          # Save the document with the generated filename
-        doc.save(filename)
+        doc.save(filename + ext)
         
     elif ext == '.pptx':
         # Generate a PowerPoint presentation
@@ -86,9 +86,9 @@ for n in range(numberOfFiles):
             row_data = [first_name, last_name, address, phone_number]
             sheet.append(row_data)
 
-        workbook.save(filename)
+        workbook.save(filename + ext)
     else:
-        with open(filename, 'w') as newFile:
+        with open(filename + ext, 'w') as newFile:
             for _ in range(10):
                 newFile.write(str(random.randint(0,60 + (n * 10))) + "\n")
             newFile.write("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.\n")

@@ -15,7 +15,7 @@ base_name = ("project", "report", "training", "meeting", "09-28-2021","Financial
 extra_name = ("Q1","Q2", "Q3", "Q4", "<COMPANY_NAME", ,)
 hvf_name = ("CONFIDENTIAL", "Sensitive", "Privileged", )
 file_ext = (".txt", ".pdf", ".docx")
-all_names = (extra_name, base_name, file_ext)
+all_names = (extra_name, base_name)
 
 
 for n in range(numberOfFiles):
@@ -29,13 +29,13 @@ for n in range(numberOfFiles):
         for _ in range(10):
             pdf.cell(0, 10, txt=str(random.randint(0,60 + (n * 10))), ln=True)
         pdf.cell(0, 10, txt="ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.", ln=True)
-        pdf.output(filename)
+        pdf.output(filename + ext)
     elif ext == '.docx':
         doc = Document()
         for _ in range(10):
             doc.add_paragraph(str(random.randint(0,60 + (n * 10))))
         doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
-        doc.save(filename)
+        doc.save(filename + ext)
     elif ext == '.pptx':
         pres = Presentation()
         slide_layout = pres.slide_layouts[0]  # choosing a slide layout
@@ -67,9 +67,9 @@ for n in range(numberOfFiles):
             row_data = [first_name, last_name, address, phone_number]
             sheet.append(row_data)
 
-        workbook.save(filename)
+        workbook.save(filename + ext)
     else:
-        with open(filename, 'w') as newFile:
+        with open(filename + ext, 'w') as newFile:
             for _ in range(10):
                 newFile.write(str(random.randint(0,60 + (n * 10))) + "\n")
             newFile.write("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.\n")

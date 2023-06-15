@@ -14,7 +14,7 @@ numberOfFiles = 10
 base_name = ("project", "new","file","workplace", "report", "training", "meeting" ,"screenshot", "09-28-2021")
 extra_name = ("Q1","Q2", "Q3", "Q4", "<COMPANY_NAME>", "personal","school")
 file_ext = (".txt", ".pdf", ".docx")
-all_names = (extra_name, base_name, file_ext)
+all_names = (extra_name, base_name)
 
 
 for n in range(numberOfFiles):
@@ -36,7 +36,7 @@ for n in range(numberOfFiles):
         pdf.cell(0, 10, txt="ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.", ln=True)
         
         # Save the PDF with the generated filename
-        pdf.output(filename)
+        pdf.output(filename + ext)
     
     elif ext == '.docx':
         # Generate a Word document
@@ -50,7 +50,7 @@ for n in range(numberOfFiles):
         doc.add_paragraph("ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE.")
         
         # Save the document with the generated filename
-        doc.save(filename)
+        doc.save(filename + ext)
     
     elif ext == '.pptx':
         # Generate a PowerPoint presentation
@@ -70,7 +70,7 @@ for n in range(numberOfFiles):
         subtitle.text = "ADD COMPANY NAME AND/OR CUSTOM MESSAGE HERE."
         
         # Save the presentation with the generated filename
-        pres.save(filename)
+        pres.save(filename + ext)
     
     elif ext == '.xlsx':
         # Generate an Excel workbook
@@ -91,4 +91,4 @@ for n in range(numberOfFiles):
             sheet.append(row_data)
 
         # Save the workbook with the generated filename
-        workbook.save(filename)
+        workbook.save(filename + ext)
